@@ -1,1 +1,1 @@
-console.log(`Started`)
+import './main.scss'
