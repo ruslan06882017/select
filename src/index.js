@@ -7,9 +7,9 @@ const formSearch = document.querySelector('.form-search'),
 
 // const citiesAPI = 'http://api.travelpayouts.com/data/ru/cities.json',
 const citiesAPI = './cities.json',
-      proxy = 'https://cors-anywhere.herokuapp.com/',
+      PROXY = 'https://cors-anywhere.herokuapp.com/',
       API_KEY = '2f06188950b6215c59639349941c759f',
-      calendar = 'http://min-prices.aviasales.ru/calendar_preload'
+      CALENDAR = 'http://min-prices.aviasales.ru/calendar_preload'
 
 
       
@@ -57,8 +57,75 @@ formSearch.addEventListener('submit', (e) => {
     when: inputDateDepart.value
   }
 
-  console.log(formData)
+  const requestData = `?depart_date=${formData.when}&origin=${formData.from}&destination=${formData.to}&one_way=true&token=${API_KEY}`
+  // console.log(PROXY + CALENDAR + requestData)
+
+/*   getData(CALENDAR + requestData, (response) => {
+    renderCheap(response, formData.when)
+  }) */
+
+  const flightList = document.querySelector('.flight-list')
+ 
+
+  getData(CALENDAR + requestData, (response) => {
+    const data = JSON.parse(response).best_prices
+
+    data.forEach(item => {
+      console.log(item)
+      let cargoInfo = {
+        fromCity: getCityName(item.origin),
+        toCity: getCityName(item.destination)
+      }      
+      
+      flightList.insertAdjacentHTML('afterbegin', renderCard(cargoInfo))
+
+    })
+      
+     
+  })
+
 })
+
+
+const renderCard = (data) => {
+  return `
+      <h3 class="agent">Aviakassa</h3>
+      <div class="ticket__wrapper">
+        <div class="left-side">
+          <a href="https://www.aviasales.ru/search/SVX2905KGD1" class="button button__buy">Купить
+            за 19700₽</a>
+        </div>
+        <div class="right-side">
+          <div class="block-left">
+            <div class="city__from">Вылет из города
+              <span class="city__name">${data.fromCity}</span>
+            </div>
+            <div class="date">29 мая 2020 г.</div>
+          </div>
+      
+          <div class="block-right">
+            <div class="changes">Без пересадок</div>
+            <div class="city__to">Город назначения:
+              <span class="city__name">${data.toCity}</span>
+            </div>
+          </div>
+        </div>
+      </div>    
+    `
+}
+
+const getCityName = (code) => {
+  const objCity = city.find((item) => item.code === code)
+  return objCity.name
+}
+
+
+
+const renderCheap = (data, date) => {
+  const cheapTicketMonth = JSON.parse(data)
+  console.log(cheapTicketMonth)
+
+}
 
 
 // FROM
@@ -103,6 +170,8 @@ const getData = (url, cb) => {
   })
   request.send()
 }
+
+
 
 getData(citiesAPI, (data) => {
   city = JSON.parse(data).filter(item => item.name)
