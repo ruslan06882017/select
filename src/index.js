@@ -176,3 +176,4 @@ const getData = (url, cb) => {
 getData(citiesAPI, (data) => {
   city = JSON.parse(data).filter(item => item.name)
 })
+
