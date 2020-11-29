@@ -1,37 +1,36 @@
-import image from './assets/v2.jpg'
+import imageURL from './assets/v2.jpg'
+import {ImageBlock, TitleBlock, TextBlock, TextColumnsBlock} from './classes/blocks'
 
 export const model = [
 
-  {type: 'title', value: 'Test title', 
-   options:{
+  new TitleBlock('Title of my project', {
     tag: 'h2',
     styles: 'background: darkred; color: #fff;'
-   },
-  },
-
-  {
-    type: 'text', value: 'lorem', options:{
+   }),
+ 
+   new TextBlock('lorem sdfsdf lsdfj sdfjsrer', {
     tag: 'p',
     styles: 'background: darkblue; color: yellow; text-align:center;'
-  }
-  },
+   }),
 
-  {
-      type: 'textColumns', value: [
-      '1 text',
-      '2 text',
-      '3 text',
-      'Lorem ipsum dolor s'
-    ], options:{
-      styles: 'padding: 1rem;'
-    }
-  },
 
-  {type: 'image', value: image, 
-   options:{
-    tag: 'img',
+   new ImageBlock(imageURL, {
     imageStyles: 'width: 500px; height: auto;',
-    styles: 'padding 2rem 0; display: flex; justify-content:center'
-   },
-  }
+    styles: 'padding 2rem 0; display: flex; justify-content:center;'
+   }),
+   
+   new TextColumnsBlock([
+    '1 text',
+    '2 text',
+    '3 text',
+    'Lorem ipsum dolor s'
+  ], {
+    styles: 'padding: 1rem;'
+  }),
+ 
+   new TextBlock('lorem sdfsdf lsdfj sdfjsrer', {
+    tag: 'p',
+    styles: 'background: darkblue; color: yellow; text-align:center;'
+   })
+
 ]
