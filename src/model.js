@@ -1,4 +1,4 @@
-import imageURL from './assets/v2.jpg'
+import imageURL from './assets/v2.png'
 import {ImageBlock, TitleBlock, TextBlock, TextColumnsBlock} from './classes/blocks'
 
 export const model = [
