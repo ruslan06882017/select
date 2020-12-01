@@ -1,4 +1,4 @@
-import {TitleBlock, TextBlock, ImageBlock} from './blocks'
+import {TitleBlock, TextBlock} from './blocks'
 
 export class SideBar {
   constructor(selector, update){
