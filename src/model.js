@@ -1,17 +1,23 @@
-import imageURL from './assets/v2.png'
+import imageURL from './assets/baker.png'
 import {ImageBlock, TitleBlock, TextBlock, TextColumnsBlock} from './classes/blocks'
 
 export const model = [
 
-  new TitleBlock('Title of my project', {
-    tag: 'h2',
-    styles: 'background: darkred; color: #fff;'
+  new TitleBlock('Эксклюзивная и вкусная <br> выпечка в Алматы', {
+    tag: 'h1',
+    styles: 'color: #090909; text-align:center;'
    }),
  
+  new TitleBlock('Контактный телефон: +7 (777) 5035757', {
+    tag: 'h4',
+    styles: 'color: #b8b8b8; text-align:center;'
+   }),
+ 
+/* 
    new TextBlock('lorem sdfsdf lsdfj sdfjsrer', {
     tag: 'p',
     styles: 'background: darkblue; color: yellow; text-align:center;'
-   }),
+   }), */
 
 
    new ImageBlock(imageURL, {
@@ -19,18 +25,17 @@ export const model = [
     styles: 'padding 2rem 0; display: flex; justify-content:center;'
    }),
    
+
    new TextColumnsBlock([
-    '1 text',
-    '2 text',
-    '3 text',
-    'Lorem ipsum dolor s'
+    'Мы предлагаем',
+    'Самые свежие хлебобулочные изделия в городе предлагает наша пекарня. Мы «Выпечка №1», и это не просто слова, а цель, которую мы ежедневно достигаем. Наши сотрудники не первый год удовлетворяют запросы покупателей на недорогую и вкусную продукцию. Количество наших клиентов постоянно растет, и мы будем рады видеть вас в их числе.'
   ], {
     styles: 'padding: 1rem;'
   }),
  
-   new TextBlock('lorem sdfsdf lsdfj sdfjsrer', {
+/*    new TextBlock('lorem sdfsdf lsdfj sdfjsrer', {
     tag: 'p',
     styles: 'background: darkblue; color: yellow; text-align:center;'
-   })
+   }) */
 
 ]

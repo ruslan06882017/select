@@ -7,6 +7,7 @@ const site = new Site('#site')
 const updateCallback = newBlock => {
   model.push(newBlock)
   site.render(model)
+  console.log(`Added new block`)
 }
 
 new SideBar('#panel', updateCallback)

@@ -15,8 +15,8 @@ export class SideBar {
 
   get template(){
     return [
-      block('text'),
-      block('title')
+      block('title'),
+      block('text')
     ].join('')
   }
 
@@ -29,7 +29,6 @@ export class SideBar {
 
     const Constructor = type === 'text' ? TextBlock : TitleBlock
     const newBlock = new Constructor(value, {styles})
-    // console.log(newBlock)
     this.update(newBlock)
 
     e.target.value.value = ''
@@ -39,6 +38,7 @@ export class SideBar {
 }
 
 function block(type) {
+  if (type == 'title') type = 'Заголовок'; else type = 'Текст' 
   return `
     <form name="${type}">
       <h5>${type}</h5>
